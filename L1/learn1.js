@@ -30,6 +30,44 @@ function createTable(container_id,row_count,col_count){
 		}
 	}
 }
+
+/**
+ * Снимаем маркер выделенной ячейки
+ */
+function unselectCell(){
+	var elm=document.getElementById('select_cell');
+	if (elm!=undefined) elm.setAttribute('id','');
+}
+/**
+ * ставим маркер
+ * elem - ссылка на объект на который ставим
+ */
+function selectCell(elem){
+	elem.setAttribute('id','select_cell');
+}
+
+/**
+ * выводим название ячейки шахматки
+ */
+function outChessCellIndex(row_id,cell_id){
+	var l1=document.getElementById('out_panel');
+	var leter=(String.fromCharCode(64+cell_id))+(9-cell_id);
+	l1.innerHTML='<p>'+leter+'</p>';
+}
+/**
+ * обработка клика
+ */
+function onClickCell(event){
+	// эту бредятину можно было не писать а извлекать id ячейки. 
+	// но пусть будет так :)
+	unselectCell();
+	var row_id=event.currentTarget.parentElement.rowIndex;
+	var cell_id=event.currentTarget.cellIndex;
+	outChessCellIndex(row_id,cell_id);
+	selectCell(event.currentTarget);
+	
+}
+
 /**
  * Создаем шахматную доску. 8x8
  * 
@@ -39,6 +77,8 @@ function createChessTable(container_id){
 	var color_index=0;
 	var l1=document.getElementById(container_id);
 	l1.innerHTML='<table id="p1-chess"></table>';
+	var row= document.getElementById("p1-chess").insertRow(-1);
+	row.innerHTML='<th></th><th>a</th><th>b</th><th>c</th><th>d</th><th>e</th><th>f</th><th>g</th><th>h</th>';
 	
 	for (i=0;i<8;i++){
 		var row= document.getElementById("p1-chess").insertRow(-1);
@@ -51,6 +91,7 @@ function createChessTable(container_id){
 			cell.innerHTML='<p> </p>';
 			cell.style.backgroundColor=color_chess[color_index];
 			color_index=color_index ^ 1;
+			cell.onclick=onClickCell;	
 		}
 		color_index=color_index ^ 1;
 	}
