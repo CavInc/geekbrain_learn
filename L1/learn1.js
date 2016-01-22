@@ -65,8 +65,13 @@ function onClickCell(event){
 	var cell_id=event.currentTarget.cellIndex;
 	outChessCellIndex(row_id,cell_id);
 	selectCell(event.currentTarget);
-	
 }
+/**
+ * обрабатываем клавиатуру.
+ */
+function onKeyUP(event){
+	console.log(event);
+} 
 
 /**
  * Создаем шахматную доску. 8x8
@@ -76,6 +81,7 @@ function createChessTable(container_id){
 	var color_chess=['white','black'];
 	var color_index=0;
 	var l1=document.getElementById(container_id);
+
 	l1.innerHTML='<table id="p1-chess"></table>';
 	var row= document.getElementById("p1-chess").insertRow(-1);
 	row.innerHTML='<th></th><th>a</th><th>b</th><th>c</th><th>d</th><th>e</th><th>f</th><th>g</th><th>h</th>';
