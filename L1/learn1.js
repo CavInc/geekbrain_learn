@@ -26,15 +26,38 @@ function createTable(container_id,row_count,col_count){
 			cell.innerText=String.fromCharCode(letter);
 			cell.style.backgroundColor=palitre[color2];
 			cell.style.color='white';
+			cell.style.textAlign = "center";
 		}
 	}
 }
 /**
+ * Создаем шахматную доску. 8x8
+ * 
  */
 function createChessTable(container_id){
+	var color_chess=['white','black'];
+	var color_index=0;
+	var l1=document.getElementById(container_id);
+	l1.innerHTML='<table id="p1-chess"></table>';
+	
+	for (i=0;i<8;i++){
+		var row= document.getElementById("p1-chess").insertRow(-1);
+		var header=row.insertCell(-1);
+		header.className ='check_header';
+		header.innerHTML=(8-i);
+		header.style.textAlign = "center";
+		for (j=0;j<8;j++){
+			var cell=row.insertCell(-1);
+			cell.innerHTML='<p> </p>';
+			cell.style.backgroundColor=color_chess[color_index];
+			color_index=color_index ^ 1;
+		}
+		color_index=color_index ^ 1;
+	}
 }
 
 window.onload=function(){
 	console.log('TEST');
 	createTable('paragraf1',10,5);
+	createChessTable('chess');
 }
