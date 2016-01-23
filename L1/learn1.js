@@ -45,13 +45,21 @@ function unselectCell(){
 function selectCell(elem){
 	elem.setAttribute('id','select_cell');
 }
+/**
+ * ставим маркет по координатам ячейки
+ */
+function selectCellCoord(x,y){
+	var l1=document.getElementById('p1-chess');
+	selectCell(l1.children[0].children[y].children[x])
+}
 
 /**
  * выводим название ячейки шахматки
  */
 function outChessCellIndex(row_id,cell_id){
+	console.log(row_id+" "+cell_id);
 	var l1=document.getElementById('out_panel');
-	var leter=(String.fromCharCode(64+cell_id))+(9-cell_id);
+	var leter=(String.fromCharCode(64+cell_id))+(9-row_id);
 	l1.innerHTML='<p>'+leter+'</p>';
 }
 /**
@@ -65,12 +73,38 @@ function onClickCell(event){
 	var cell_id=event.currentTarget.cellIndex;
 	outChessCellIndex(row_id,cell_id);
 	selectCell(event.currentTarget);
+	chess_curs['x']=cell_id;
+	chess_curs['y']=row_id;
 }
+var chess_curs={'x':0,'y':0};
 /**
  * обрабатываем клавиатуру.
  */
 function onKeyUP(event){
-	console.log(event);
+	var code=event.keyCode;
+	if (code===37) {
+		//left
+		chess_curs['x'] -=1;
+		if (chess_curs['x']<1) chess_curs['x']=8;
+	}
+	if (code===40) {
+		//down
+		chess_curs['y'] +=1;
+		if (chess_curs['y']>8) chess_curs['y']=1;
+	}
+	if (code===39) {
+		//rigth
+		chess_curs['x'] +=1;
+		if (chess_curs['x']>8) chess_curs['x']=1;
+	}
+	if (code===38) {
+		//up
+		chess_curs['y'] -=1;
+		if (chess_curs['y']<1) chess_curs['y']=8;
+	}	
+	unselectCell();
+	selectCellCoord(chess_curs['x'],chess_curs['y']);
+	outChessCellIndex(chess_curs['y'],chess_curs['x']);
 } 
 
 /**
@@ -104,7 +138,7 @@ function createChessTable(container_id){
 }
 
 window.onload=function(){
-	console.log('TEST');
 	createTable('paragraf1',10,5);
 	createChessTable('chess');
+	addEventListener("keyup",onKeyUP);
 }
