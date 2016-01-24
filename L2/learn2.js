@@ -30,6 +30,8 @@ function Chess(containerID){
 		var elm=document.getElementById('select_cell');
 		if (elm!=undefined) elm.setAttribute('id','');		
 	};
+	this.onClickCell=function(event){
+	}
 	
 }
 // объект через объект :) можно сказать статический класс из Java :)
@@ -61,23 +63,42 @@ var chess={
 	unselectCell:function(){
 		var elm=document.getElementById('select_cell');
 		if (elm!=undefined) elm.setAttribute('id','');		
+	},
+	onClickCell:function(event){
 	}
 }
 
 // П2.
 String.prototype.addToElement=function(elem,val){
+	// в данном методе отсутствует проверка на допустимый елемент HTML 
 	var node=document.createElement(elem);
 	node.class=val;
 	node.innerHTML=this;
 	return node;
 }
 
+// П3
+var myHTML=Object.create(null);
+myHTML['localvalue']='';
+myHTML['addText']=function(str){
+	return this;
+}
+myHTML['showHTML']=function(){
+}
+myHTML['addH']=function(str, N){
+}
+
+
+
 window.onload=function(){
 	var chess_p1=new Chess('chess1');
 	chess_p1.create();
 	chess.create('chess2');
+	// проверяем работу П 2 из домашнего задания
+	// оборачиваем строку в элемент и присваеваем название класса
 	var a='TEST'.addToElement('i','rrrr');
-	console.log(a.toString);
 	var l=document.getElementById('p2');
 	l.appendChild(a);
+	var mHtml=myHTML;
+	console.log(mHtml);
 }
