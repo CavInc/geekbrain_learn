@@ -69,8 +69,6 @@ String.prototype.addToElement=function(elem,val){
 	var node=document.createElement(elem);
 	node.class=val;
 	node.innerHTML=this;
-	console.log(this);
-	console.log(this.PrimitiveValue);
 	return node;
 }
 
@@ -78,8 +76,8 @@ window.onload=function(){
 	var chess_p1=new Chess('chess1');
 	chess_p1.create();
 	chess.create('chess2');
-	var a='TEST'.addToElement('p','rrrr');
+	var a='TEST'.addToElement('i','rrrr');
 	console.log(a.toString);
 	var l=document.getElementById('p2');
-	l.innerHTML(a);
+	l.appendChild(a);
 }
