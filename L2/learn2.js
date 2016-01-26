@@ -126,28 +126,47 @@ myHTML['showHTML'] = function(){
   return myHTML['localvalue'];
 }
 myHTML['addH'] = function(str, N){
+  if ((N<1) || (N>6)) return undefined; 
   myHTML['H'] = N;
-  return '<h'+N+'>'+myHTML['localvalue']+'</n'+N+'>';
+  return '<h'+N+'>'+myHTML['localvalue']+'</h'+N+'>';
 }
 
 
+function click_p2(){
+  	// проверяем работу П 2 из домашнего задания
+	// оборачиваем строку в элемент и присваеваем название класса
+  var text = document.getElementById('str_p2').value;
+  var html_elm = document.getElementById('html_elm_p2').value;
+  var elm_class = document.getElementById('html_elm_class').value;
+	var a = text.addToElement(html_elm, elm_class);
+  
+	var l = document.getElementById('p2');
+	l.appendChild(a);
+}
+
+function click_p3() {
+  // проверяем работу П 3
+  var text = document.getElementById('str_p3').value;
+  mHtml.addText(text);
+  var l = document.getElementById('p3');
+  l.appendChild(document.createTextNode(mHtml.showHTML()));
+}
+
+// проверяем работу П 3
+// создали экземпляр класса
+var mHtml=myHTML;
 
 window.onload=function(){
 	var chess_p1=new Chess('chess1');
 	chess_p1.create();
 	chess.create('chess2');
 	
-	// проверяем работу П 2 из домашнего задания
-	// оборачиваем строку в элемент и присваеваем название класса
-	var a='TEST'.addToElement('i','rrrr');
-	var l=document.getElementById('p2');
-	l.appendChild(a);
-	
+
 	// проверяем работу П 3
-	var mHtml=myHTML;
 	console.log(mHtml);
 	console.log(mHtml.addText('ПРИВЕТ'));
 	console.log(mHtml.addText(' МИР'));
+  console.log(mHtml.addH(' ЗЕЛЕНЬ',2));
 	console.log(mHtml.showHTML());
 	
 }
