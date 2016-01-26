@@ -3,6 +3,14 @@
  * отображение выделенного элемента  и управления от клавиатуры выкинуто
  * 
  */
+/**
+ * вспомогательная для привязки контекста
+ */ 
+function bind(func, context) {
+  return function() {
+    return func.apply(context, arguments);
+  };
+} 
 
 // объект через функцию 
 function Chess(containerID){
@@ -27,25 +35,36 @@ function Chess(containerID){
 				var cell = row.insertCell(-1);
 				cell.innerHTML = '<p> </p>';
 				cell.style.backgroundColor = color_chess[color_index];
+				cell.style.border="2px solid "+color_chess[color_index];
 				color_index = color_index ^ 1;
 				cell.setAttribute('id',String.fromCharCode(65+j)+(8-i));
-				cell.onclick=this.onClickCell;
+				// передаем контекст в функцию через анонимную функцию
+				cell.onclick = bind(this.onClickCell,this);
 			}
 			color_index = color_index ^ 1;
 		}
 	};
-	this.unselectCell = function(){
-		var elm = document.getElementById('select_cell');
-		if (elm!=undefined) elm.setAttribute('id','');		
+	this.unselectCell = function(elem_id){
+		var elm = document.getElementById(elem_id);
+		if (elm!=undefined) {
+			elm.style.border="2px solid "+elm.style.backgroundColor;
+        }			
 	};
 	this.onClickCell = function(event){
-		unselectCell();
+		this.unselectCell(this.select_id);
+		var id=event.target.id;
+		this.select_id=id;
+		this.selectCell(id);
 	}
-	this.selectCell = function(elem){
+	this.selectCell = function(elem_id){
+		var elm = document.getElementById(elem_id);
+		elm.style.border='2px solid red';
 	}
-	
 }
-// объект через объект :) можно сказать статический класс из Java :)
+
+/**
+ *  объект через объект :) можно сказать статический класс из Java :)
+ */
 var chess = {
 	chess_curs: {'x':0,'y':0},
 	create: function(containerID){
