@@ -2,3 +2,10 @@ body {
   padding: 0;
   font: 16px/24px Arial, Tahoma, sans-serif;
 }
+button {
+ background: #43516a;
+ color: #FFF;
+ font-size: 20px;
+ padding: 10px;
+ border-radius: 12px;
+}
