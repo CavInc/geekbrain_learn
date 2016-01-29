@@ -9,7 +9,14 @@ function onClickP1() {
   }
 }
 
- 
+/**
+ * код для П.2
+ */
+function onClickP2() {
+  var elem=$(":text");
+  elem.eq(0).val("Значение 1");
+  elem.eq(1).val("Значение 2");
+}
 
 window.onload=function(){
   console.log( $("#block"));
