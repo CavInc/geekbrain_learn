@@ -33,4 +33,11 @@ function onClickP3() {
 function onClickP4() {
  $("ul li").eq(1).html("<b>"+$("ul li").eq(1).html()+"</b>")
 }
+/**
+ * код для П.5
+ * в одну строчку :) 
+ */
+function onClickP5() {
+  $("#result").eq(0).html('Реультат :'+$("ul li:last").eq(0).html());
+}
 
