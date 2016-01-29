@@ -18,8 +18,19 @@ function onClickP2() {
   elem.eq(1).val("Значение 2");
 }
 
-window.onload=function(){
-  console.log( $("#block"));
-  var p=$("#block p")[0];
-  //p.innerHTML="HHHHHHH !@#$#";
+/**
+ * код для П.3
+ */
+function onClickP3() {
+  var s=$("#myselect option[value=2]").html();
+  $("#result").eq(0).html('Реультат :'+s);
 }
+
+/**
+ * код для П.4
+ * в одну строчку :) 
+ */
+function onClickP4() {
+ $("ul li").eq(1).html("<b>"+$("ul li").eq(1).html()+"</b>")
+}
+
