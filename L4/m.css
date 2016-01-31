@@ -1,9 +1,12 @@
-.m12 {
-  background: silver;
-  font-size: 16px;
-  color: #444;
-  border: 2px solid #FFF;
-  border-radius: 5px;
-  padding: 20px;
-  width: 300px;
+.tabed_header {
+   padding: 10px;
+   border: 1px solid #444;
 }
+.tabed_header p {
+}
+
+.tabed_body {
+   padding: 6 px;
+   border: 1px solid #444;
+}
+
