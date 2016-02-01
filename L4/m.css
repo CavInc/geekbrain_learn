@@ -1,12 +1,19 @@
 .tabed_header {
    padding: 10px;
    border: 1px solid #444;
+   display: flex;
 }
 .tabed_header p {
+  margin: 5px 10px 5px;
+  border: 1px soild #4444;
 }
 
 .tabed_body {
-   padding: 6 px;
+   padding: 6px;
    border: 1px solid #444;
+}
+
+.active {
+  background: silver;
 }
 
