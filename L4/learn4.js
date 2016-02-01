@@ -15,8 +15,8 @@ function TabPane(container_id,tabed_id){
       $("#"+this.tabed_id+"_table > p ").addClass("active");
     }
     $("#"+this.tabed_id+"_table > p").click(function(event){
-      console.log(event);
-      $("#"+this.tabed_id+"_table > p .active").removeClass("active");
+      $("#"+this.parentElement.getAttribute('id')+" > p.active").removeClass("active");
+      event.currentTarget.className='active';
       
     });
     $("#"+this.tabed_id).append($('<div id="table_context'+this.countTab+'" class="tabed_body"></div>'));
