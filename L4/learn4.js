@@ -1,5 +1,6 @@
 /**
- * 
+ * То что получилось использовать нельзя
+ * для продакшена нужно переделать в более человеческий вид
  */
 function TabPane(container_id,tabed_id){
   this.container_id = container_id;
