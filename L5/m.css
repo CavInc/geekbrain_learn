@@ -1,0 +1,10 @@
+body {
+  padding: 0;
+  font: 16px/24px Arial, Tahoma, sans-serif;
+}
+#form_test {
+  border: 1px solid #222;
+  margin: 10px;
+  padding: 10px;
+  width: 60%;
+}
