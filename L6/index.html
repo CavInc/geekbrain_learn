@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="m.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script language="javascript" type="text/javascript" src="learn6.js"></script>
+</head>
+<body>
+  <div id="form_test">
+   <form>
+     <legend>Логин</legend>
+     <input type="text" id="username" name="username" maxlength=100 pattern="[A-Za-z]{6,}"/>
+     <legend>Пароль</legend>
+     <input type="password" id="pass" name="pass" maxlength=100/>
+     <legend>Электронная почта</legend>
+     <input type="text" id="email" name="email" placeholder="name@empty.com"/>
+     <legend>Пол</legend>
+     <select id="gender">
+       <option>M</option>
+       <option>Ж</option>
+     </select>
+     <legend>Номер кредитной карты</legend>
+     <input type="text" id="credit_card" name="credit_card"/>
+     <legend>Краткая биография</legend>
+     <input type="text" id="bio" size=127/><br>
+     <input type="submit" id="send"/>
+   </form>
+  </div>
+  <div id="response"></div>
+</body>
+</html>	  
