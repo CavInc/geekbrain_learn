@@ -4,6 +4,7 @@ window.onload=function() {
   (function ($){
     $('#pg_bar').progressbar();
     
+    $('#birthday').datepicker();
 
     // вешаем обработчики на ввод значений полей
     var inp_elm=$("input");
