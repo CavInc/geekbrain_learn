@@ -49,11 +49,17 @@ window.onload=function() {
         success: function(data){
           console.log(data);
           if (data.result){
-            
+            $('#response').html('Проверка пройдена');
+            $('#response').dialog({modal: true,title: "Результат проверки"});
           }else{
             var s="";
             for (val in data.error) {
               s=s+"<p>"+val+":"+data.error[val]+"</p>";
+              if (val=='Email') $('#email').effect('bounce',{distance: 60,times: 800});
+              if (val=='Username') $('#username').effect('highlight',{color: "#ff5555"},1500);
+              if (val=='Cred Card') $('#credit_card').effect('highlight',{color: "#ff5555"},1500);
+              if (val=='Password') $('#password').effect('highlight',{color: "#ff5555"},1500);
+              if (val=='Birth') $('#birthday').effect('highlight',{color: "#ff5555"},1500);
             }
             s=s+"";
             $('#response').html(s);
