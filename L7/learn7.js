@@ -4,7 +4,10 @@ window.onload=function() {
   (function ($){
     $('#pg_bar').progressbar();
     
-    $('#birthday').datepicker();
+    $('#birthday').datepicker({buttonText:"...",
+      showOn: "both",
+      dateFormat: 'yy-mm-dd'
+    });
 
     // вешаем обработчики на ввод значений полей
     var inp_elm=$("input");
@@ -40,10 +43,15 @@ window.onload=function() {
           email: $("#email").val(),
           credit_card: $("#credit_card").val(),
           bio: $("#bio").val(),
-          gender: gender
+          gender: gender,
+          birth: $("#birthday").val()
         },        
         success: function(data){
           console.log(data);
+          if (data.result){
+          }else{
+            console.log('Ошибка');
+          }
         }
       });   
       event.preventDefault();
