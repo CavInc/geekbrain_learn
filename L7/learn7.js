@@ -49,8 +49,15 @@ window.onload=function() {
         success: function(data){
           console.log(data);
           if (data.result){
+            
           }else{
-            console.log('Ошибка');
+            var s="";
+            for (val in data.error) {
+              s=s+"<p>"+val+":"+data.error[val]+"</p>";
+            }
+            s=s+"";
+            $('#response').html(s);
+            $('#response').dialog({modal: true,title: "Ошибка"});
           }
         }
       });   
