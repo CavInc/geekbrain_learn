@@ -2,8 +2,8 @@ fabric.Sprite = fabric.util.createClass(fabric.Image, {
 
   type: 'sprite',
 
-  spriteWidth: 190,
-  spriteHeight: 350,
+  spriteWidth: 147,
+  spriteHeight: 202,
   spriteIndex: 0,
 
   initialize: function(element, options) {
