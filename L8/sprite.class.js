@@ -2,7 +2,7 @@ fabric.Sprite = fabric.util.createClass(fabric.Image, {
 
   type: 'sprite',
 
-  spriteWidth: 147,
+  spriteWidth: 147.2,
   spriteHeight: 202,
   spriteIndex: 0,
 
