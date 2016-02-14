@@ -26,17 +26,21 @@ fabric.Sprite = fabric.util.createClass(fabric.Image, {
 
   createSpriteImages: function() {
     this.spriteImages = [ ];
-
-    var steps = this._element.width / this.spriteWidth;
-    for (var i = 0; i < steps; i++) {
-      this.createSpriteImage(i);
+    // ога вот сдеся и меняем
+    var v_step = this._element.height / this.spriteHeight;
+    for (var j = 0; j < v_step; j++){
+      var steps = this._element.width / this.spriteWidth;
+      for (var i = 0; i < steps; i++) {
+        this.createSpriteImage(i,j);
+      }
     }
+    console.log(this.spriteImages.length);
   },
 
-  createSpriteImage: function(i) {
+  createSpriteImage: function(i,j) {
     var tmpCtx = this.tmpCanvasEl.getContext('2d');
     tmpCtx.clearRect(0, 0, this.tmpCanvasEl.width, this.tmpCanvasEl.height);
-    tmpCtx.drawImage(this._element, -i * this.spriteWidth, 0);
+    tmpCtx.drawImage(this._element, -i * this.spriteWidth, -j * this.spriteHeight);
 
     var dataURL = this.tmpCanvasEl.toDataURL('image/png');
     var tmpImg = fabric.util.createImage();

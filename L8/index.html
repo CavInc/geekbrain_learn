@@ -10,7 +10,7 @@
   </style>
 </head>
 <body>
-  <div id="img"><img src="sp4.png" width="900px" height="200px"></div>
+  <div id="img"><img src="sp4.png" /></div>
   <div>
     <canvas id="cx" width="400px" height="400px" style="border: 1px solid #000" ></canvas>
   </div>
@@ -18,16 +18,13 @@
   <script src="sprite.class.js"></script>
   <script id="m_script">
     (function(){
-      console.log("На чинаем баловаться");
       var canvas=this.__canvas=new fabric.Canvas("cx");
       fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
       fabric.Object.prototype.transparentCorners = false;
      // var rect = new fabric.Rect({left: 100,top: 100,fill: 'red',width: 20,height: 20});
      // canvas.add(rect);
       
-      console.log(fabric.Sprite.spriteWidth);
-      
-      fabric.Sprite.fromURL('sp4.png', createSprite(2, 2));
+      fabric.Sprite.fromURL('sp4.png', createSprite(1, 2));
       
       function createSprite(i,j) {
         return function(sprite) {
