@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Работа с Fabric</title>
+	<meta charset="utf-8">
+  <style type="text/css">
+    #img {
+      heigth: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div id="img"><img src="sp4.png" width="900px" height="200px"></div>
+  <div>
+    <canvas id="cx" width="500px" height="500px" style="border: 1px solid #000" ></canvas>
+  </div>
+  <script src="fabric.min.js"></script>
+  <script src="sprite.class.js"></script>
+  <script id="m_script">
+    (function(){
+      console.log("На чинаем баловаться");
+      var canvas=this.__canvas=new fabric.Canvas("cx");
+      fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
+      fabric.Object.prototype.transparentCorners = false;
+     // var rect = new fabric.Rect({left: 100,top: 100,fill: 'red',width: 20,height: 20});
+     // canvas.add(rect);
+      
+      console.log(fabric.Sprite.spriteWidth);
+      
+      fabric.Sprite.fromURL('sp4.png', createSprite(2, 2));
+      
+      function createSprite(i,j) {
+        return function(sprite) {
+          sprite.set({
+            left: i * 100 + 50,
+            top: j * 100 + 50,
+            angle: 0
+          });
+          canvas.add(sprite);
+          setTimeout(function() {
+            sprite.play();
+          }, fabric.util.getRandomInt(1, 10) * 100);
+        };        
+      };
+      (function render(){
+        canvas.renderAll();
+        //fabric.util.requestAnimFrame(render);
+      })();
+    })();
+  </script>
+</body>
+</html>
